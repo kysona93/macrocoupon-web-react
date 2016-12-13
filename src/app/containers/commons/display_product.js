@@ -1,24 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
 import { Row, Col } from 'react-bootstrap';
-import Card from './../common/card.js';
-import * as actions from './../../actions/home';
-import { LOAD_PRODUCT_CARDS } from './../../actions/home/index.js';
+import Card from './../../components/commons/card.js';
+import { loadProductCards } from './../../actions/products.js';
 
-var $ = require("jquery");
+var $ = require("jquery"); 
 
-var i=0;
-// Home page component
 class DisplayProduct extends React.Component {
   constructor(props){
     super(props);
-    this.state = { 
-      limit: 16
+    this.state = {  
+      limit: 16 
     }
 
     $(document).scroll(() => {
         if ($(window).scrollTop() + $(window).height() == $(document).height()) {
-            alert("You reached botton");
+            //alert("You reached botton");
             this.setState({limit: (this.state.limit+16)})
             this.props.loadProductCards(this.state.limit);
         }
@@ -26,7 +24,6 @@ class DisplayProduct extends React.Component {
   }
 
   componentWillMount(){
-    //console.log("componentWillMount");
     this.props.loadProductCards(this.state.limit);
   } 
   // render
@@ -57,4 +54,8 @@ function mapStateToProps(state){
   })
 }
 
-export default connect(mapStateToProps, actions)(DisplayProduct);
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({loadProductCards},dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayProduct);

@@ -1,20 +1,26 @@
 import React from "react";
-import Home from './Home.js';
-//import Navigation from "./commons/Navigation";
+import { connect } from "react-redux";
+import Navigation from "./commons/Navigation";
 
-export default class App extends React.Component {
+class App extends React.Component {
+
+    componentWillMount() {
+        this.props.dispatch({
+            type: 'HOME_PRODUCTS_LIST'
+        })
+    }
 
     render() {
         return (
             <div className="container">
-                <Home />
-                {/* } <div class="row">
+                <div>
                     <Navigation />
                 </div>
-                <div class="row">
+                <div>
                     {this.props.children}
-                </div> */}
+                </div>
             </div>
         );
     }
 }
+export default connect()(App);

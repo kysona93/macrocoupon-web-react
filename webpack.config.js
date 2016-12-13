@@ -2,11 +2,10 @@ const path = require('path');
 const webpack = require("webpack");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const PUBLIC_DIR = path.resolve(__dirname, "public");
-const SRC_DIR = path.resolve(__dirname, "src");
+const PUBLIC_DIR = path.resolve(__dirname, 'public');
+const SRC_DIR = path.resolve(__dirname, 'src');
 module.exports = {
     entry: [
-
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
         'babel-polyfill',
@@ -14,11 +13,11 @@ module.exports = {
     ],
     output: {
         path: PUBLIC_DIR + '/js',
-        publicPath: '/js',
+        publicPath: 'js',
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: ['', '.jsx', '.scss', '.js', '.json'],
+        extensions: ['', '.jsx', '.js', '.json'],
         modulesDirectories: [
             'node_modules',
             path.resolve(__dirname, './node_modules')
@@ -34,10 +33,6 @@ module.exports = {
                     cacheDirectory: true,
                     presets: ['es2015', 'react']
                 }
-            },
-            {
-                test: /\.html$/,
-                loader: 'html'
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
@@ -63,6 +58,5 @@ module.exports = {
             verbose: true,
             dry: false
         })
-
     ]
 };

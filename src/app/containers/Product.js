@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Table, Button, Glyphicon } from "react-bootstrap";
 import { Link } from "react-router";
-import ProductListElement from './ProductListElement';
+import { Table, Button, Glyphicon } from "react-bootstrap";
+import ProductListElement from './products/ProductListElement';
 import DeletePrompt from './../components/commons/DeletePrompt';
 
 class Product extends React.Component{
@@ -20,7 +20,9 @@ class Product extends React.Component{
         this.productDelete = this.productDelete.bind(this);
     }
     /*componentWillMount() {
-        this.props.list();
+        this.props.dispatch({
+            type: 'HOME_PRODUCTS_LIST'
+        })
     }*/
 
     // show the delete product prompt
@@ -69,10 +71,16 @@ class Product extends React.Component{
                     </thead>
                     <tbody>
                     {this.props.products.map((product, i) => {
+                        if(product.product_id === undefined){
+                            this.props.dispatch({
+                                type: 'HOME_PRODUCTS_LIST'
+                            })
+                        }else {
                             return (
                                 <ProductListElement key={i} product={product} showDeletePrompt={this.showDeletePrompt} />
                             );
-                        })
+                        }
+                    })
                     }
                     </tbody>
                 </Table>
@@ -83,9 +91,11 @@ class Product extends React.Component{
         );
     }
 }
+
 function mapStateToProps(state) {
     return {
         products: state.products
     }
 }
+
 export default connect(mapStateToProps)(Product);

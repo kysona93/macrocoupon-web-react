@@ -12,22 +12,10 @@ class Search extends  React.Component{
 
     }
     formSubmit(value){
-        //add to api
         this.props.dispatch({
             type: 'PRODUCTS_SEARCH_LIST',
-            product:{
-                address_state: value.address_state,
-                product_name: value.product_name
-            }
-        });
-
-        //add to state
-        this.props.dispatch({
-            type: 'PRODUCTS_SEARCH',
-            product:{
-                address_state: value.address_state,
-                product_name: value.product_name
-            }
+            address_state: value.address_state,
+            product_name: value.product_name
         });
     }
 
@@ -84,7 +72,7 @@ class Search extends  React.Component{
 }
 
 Search = reduxForm({
-    form: 'product-edit',
+    form: 'product-search',
     validate: function (value) {
         const errors = {};
         if(!value.product_name){
@@ -105,5 +93,6 @@ function mapStateToProps(state){
         initialValues: form_data
     };
 }
+
 
 export default connect(mapStateToProps)(Search);

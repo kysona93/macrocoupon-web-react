@@ -8,7 +8,7 @@ class ProductListElement extends React.Component{
         const {product, showDeletePrompt} = this.props;
         return (
             <tr>
-                <td>##</td>
+                <td>{Object.values(product.product_id)}</td>
                 <td>{product.product_name}</td>
                 <td>{product.product_price}</td>
                 <td>{product.product_discount}</td>
