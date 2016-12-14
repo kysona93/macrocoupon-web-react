@@ -1,8 +1,6 @@
 import assert from 'assert';
 import products from './../../../src/app/reducers/products/products';
 
-
-
 // unit tests for the users reducers
 // mocha - http://mochajs.org/#getting-started
 // assert - https://nodejs.org/api/assert.html#assert_assert_deepequal_actual_expected_message
@@ -38,5 +36,6 @@ describe('Product Reducer', () => {
                 }
             );
         });
-    });
+    });    
+
 });

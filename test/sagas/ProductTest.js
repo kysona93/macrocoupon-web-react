@@ -1,5 +1,5 @@
 import { call, put } from "redux-saga/effects";
-import assert from "assert";
+import assert from "assert"; 
 
 import { fetchProducts } from './../../src/app/sagas/products/products';
 import { getAllProducts } from './../../src/app/api/products';
@@ -14,7 +14,7 @@ describe('Users saga', () => {
         });
 
         it('should return the PRODUCTS_FETCH_SUCCESS action', () => {
-            assert.deepEqual(generator.next().value, put({type: 'PRODUCTS_FETCH_SUCCESS', products: undefined}));
+            assert.deepEqual(generator.next().value, put({type: 'PRODUCTS_FETCH_SUCCESS', productcards: undefined}));
         });
 
         it('should be finished', () => {

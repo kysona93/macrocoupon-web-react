@@ -10,7 +10,7 @@ class SearchComponent extends React.Component{
          <div>
             <Grid>
                 <Row className="Show-grid">
-                    <Col xs={6} md={6}>
+                    <Col xs={8} md={6}>
                         <form>
                             <FormGroup bsSize="large">
                                 <FormControl type="text" placeholder="Search..." />

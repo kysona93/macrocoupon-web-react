@@ -9,7 +9,7 @@ export function* fetchAllProducts(action){
     } else {
         yield put({type: 'PRODUCTS_FETCH_SUCCESS', products: products});
     }
-}
+} 
 
 export function* fetchProducts(){
     const products = yield call(getAllProducts);
